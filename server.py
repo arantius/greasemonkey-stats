@@ -17,7 +17,7 @@ from flup.server import fcgi
 
 # The amount of time, in milliseconds, to ask clients to delay until their
 # next report.
-DELAY = 1000 * 60 * 60 * 24 * 7
+INTERVAL = 1000 * 60 * 60 * 24 * 7
 
 
 def HandleData(environ, start_response):
@@ -54,7 +54,7 @@ def HandleData(environ, start_response):
       [('Content-Type', 'application/json; charset=utf-8')]
       )
   resp = {
-      'delay': DELAY,
+      'interval': INTERVAL,
       }
   yield json.dumps(resp, encoding='utf-8')
 
