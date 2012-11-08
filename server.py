@@ -27,7 +27,9 @@ def HandleData(environ, start_response):
     # We accept data by PUT.  If we see a GET, redirect to documentation.
     start_response(
         '302 Redirect',
-        [('Location', 'http://www.greasespot.net/todo-url-here')]
+        [('Location',
+          'http://www.greasespot.net/2012/11/anonymous-statistic-gathering.html'
+         )]
         )
     return
 
