@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Greasemonkey statistics gathering servier.
+"""Greasemonkey statistics gathering server.
 
 This is a FastCGI application which accepts incoming data over HTTP."""
 
