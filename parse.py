@@ -100,6 +100,22 @@ def NumScriptsStats():
   print 'Median', numpy.median(num)
 
 
+def ScriptDomains():
+  domains = collections.defaultdict(int)
+  schemes = collections.defaultdict(int)
+  for data in _LatestSubmissions():
+    for script in data['scripts']:
+      domains[script['installDomain']] += 1
+      schemes[script['installScheme']] += 1
+
+  print 'Domains:'
+  for cnt, dom in sorted([(c, d) for (d, c) in domains.items()]):
+    print '% 8d %s' % (cnt, dom)
+  print 'Schemes:'
+  for cnt, sch in sorted([(s, d) for (d, s) in schemes.items()]):
+    print '% 8d %s' % (cnt, sch)
+
+
 def main():
   if len(sys.argv) != 2:
     print 'Must supply job name argument.'
