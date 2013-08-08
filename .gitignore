@@ -1,2 +1,4 @@
-stats.db
+*.pyc
+env
 stats*.db.bz2
+stats.db
