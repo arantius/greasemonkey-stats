@@ -46,7 +46,7 @@ def HandleData(environ, start_response):
 
   conn = sqlite3.connect('stats.db')
   conn.execute(
-      'INSERT INTO stats (user_id, time, data) VALUES (?, ?, ?)',
+      u'INSERT INTO stats (user_id, time, data) VALUES (?, ?, ?)',
       (user_id, time, data)
       )
   conn.commit()
