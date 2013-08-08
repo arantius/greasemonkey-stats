@@ -6,6 +6,7 @@ This is a FastCGI application which accepts incoming data over HTTP."""
 
 import datetime
 import json
+import os
 import re
 import socket
 import sqlite3
@@ -44,7 +45,8 @@ def HandleData(environ, start_response):
     return
   data = environ['wsgi.input'].read(int(environ['CONTENT_LENGTH'], 10))
 
-  conn = sqlite3.connect('stats.db')
+  db_file = os.path.join(os.path.dirname(__file__), 'stats.db')
+  conn = sqlite3.connect(db_file)
   conn.execute(
       u'INSERT INTO stats (user_id, time, data) VALUES (?, ?, ?)',
       (user_id, time, data)
