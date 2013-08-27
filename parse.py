@@ -116,6 +116,26 @@ def ScriptDomains():
     print '% 8d %s' % (cnt, sch)
 
 
+def ScriptSizes():
+  cnt = 0
+  sizes = []
+  value_sizes = []
+  subs = []
+  for submission in _LatestSubmissions():
+    if not submission['scripts']: continue
+    if any('sizes' not in s for s in submission['scripts']): continue
+    cnt += 1
+    sizes.append( sum(sum(s['sizes']) for s in submission['scripts']) )
+    value_sizes.append( sum(s['valueSize'] for s in submission['scripts']) )
+
+  print 'Script Mean  ', numpy.mean(sizes)
+  print 'Script Median', numpy.median(sizes)
+  print 'Script Max   ', max(sizes)
+  print 'Value Mean   ', numpy.mean(value_sizes)
+  print 'Value Median ', numpy.median(value_sizes)
+  print 'Value Max    ', max(value_sizes)
+
+
 def main():
   if len(sys.argv) != 2:
     print 'Must supply job name argument.'
